@@ -61,3 +61,38 @@ int main() {
 }
 ```
 
+
+
+```C++
+#include<bits/stdc++.h>
+using namespace std;
+int a[10001],b[10001],c[20002];
+string s1,s2;
+int main(){
+	cin>>s1>>s2;
+	int lena=s1.length();
+	int lenb=s2.length();
+	for(int i=1;i<=lena;i++){
+		a[i]=s1[lena-i]-48;
+	}
+	for(int i=1;i<=lenb;i++){
+		b[i]=s2[lenb-i]-48;
+	}
+	for(int i=1;i<=lena;i++){
+		int x=0;
+		for(int j=1;j<=lenb;j++){
+			c[i+j-1]=a[i]*b[j]+x+c[i+j-1];
+			x=c[i+j-1]/10;
+			c[i+j-1]%=10;
+		}
+		c[i+lenb]=x;
+	}
+	int lenc=lena+lenb;
+	while(c[lenc]==0&&lenc>1) lenc--;
+	for(int i=lenc;i>=1;i--){
+		cout<<c[i];
+	}
+	return 0;
+}
+```
+
